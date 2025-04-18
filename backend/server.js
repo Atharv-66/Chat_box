@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "https://chat-box-5hb4.vercel.app",
   credentials: true
 }));
 
@@ -51,7 +51,7 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-box-5hb4.vercel.app",
   },
 });
 io.on("connection", (socket) => {
