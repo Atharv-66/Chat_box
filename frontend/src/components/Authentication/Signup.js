@@ -98,15 +98,16 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/user",
-        {
-          name,
-          email,
-          password,
-          pic,
-        },
-        config
-      );
+  `${process.env.REACT_APP_BACKEND_URL}/api/user`,
+  {
+    name,
+    email,
+    password,
+    pic,
+  },
+  config
+);
+
       // console.log(data);
       toast({
         title: "Registration Successful",
