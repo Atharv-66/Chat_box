@@ -37,11 +37,12 @@ const Login = () => {
           "Content-type": "application/json",
         },
       };
-      await axios.post(
+      const { data } = await axios.post(
   `${process.env.REACT_APP_BACKEND_URL}/api/user/login`,
   { email, password },
   config
 );
+
 console.log(JSON.stringify(data));
 
       // console.log(JSON.stringify(data));
@@ -54,7 +55,7 @@ console.log(JSON.stringify(data));
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.push("${process.env.REACT_APP_BACKEND_URL}/chats");
+      history.push("/chats");
     } catch (error) {
       toast({
         title: "Error Occured!",
