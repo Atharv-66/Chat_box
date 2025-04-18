@@ -53,7 +53,7 @@ const Login = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.push("/chats");
+      history.push("${process.env.REACT_APP_BACKEND_URL}/chats");
     } catch (error) {
       toast({
         title: "Error Occured!",
