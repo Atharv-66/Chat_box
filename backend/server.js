@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 app.use(cors({
-  origin: "https://chat-box-5hb4.vercel.app",
+  origin: "https://chat-box-five-jet.vercel.app",
   methods: ['GET', 'POST'],
   credentials: true
 }));
@@ -52,7 +52,7 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-box-5hb4.vercel.app",
+    origin: "https://chat-box-five-jet.vercel.app",
   },
 });
 io.on("connection", (socket) => {
