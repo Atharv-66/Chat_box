@@ -42,6 +42,7 @@ const Login = () => {
   { email, password },
   config
 );
+console.log(JSON.stringify(data));
 
       // console.log(JSON.stringify(data));
       toast({
