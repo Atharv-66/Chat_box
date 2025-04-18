@@ -16,6 +16,7 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors({
   origin: "https://chat-box-5hb4.vercel.app",
+  methods: ['GET', 'POST'],
   credentials: true
 }));
 
