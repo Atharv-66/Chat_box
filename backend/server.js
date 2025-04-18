@@ -13,6 +13,12 @@ dotenv.config();
 connectDB();
 const app = express();
 app.use(express.json());
+const cors = require("cors");
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
+
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
