@@ -97,8 +97,8 @@ const Signup = () => {
           "Content-type": "application/json",
         },
       };
-      const response = await axios.post(
-  `${process.env.REACT_APP_BACKEND_URL}/api/user`,
+       const { data } = await axios.post(
+  ${process.env.REACT_APP_BACKEND_URL}/api/user,
   {
     name,
     email,
@@ -107,11 +107,6 @@ const Signup = () => {
   },
   config
 );
-
-// Check if response is valid before proceeding
-if (response?.data) {
-  const { data } = response;
-
 
       // console.log(data);
       toast({
