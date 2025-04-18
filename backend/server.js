@@ -14,11 +14,17 @@ connectDB();
 const app = express();
 app.use(express.json());
 const cors = require("cors");
+const allowedOrigins = [
+  "https://chat-box-5hb4.vercel.app",
+  "https://chat-box-five-jet.vercel.app"
+];
+
 app.use(cors({
-  origin: "https://chat-box-five-jet.vercel.app",
-  methods: ['GET', 'POST'],
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
+
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
