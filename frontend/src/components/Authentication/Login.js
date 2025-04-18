@@ -37,11 +37,12 @@ const Login = () => {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.post(
-        "/api/user/login",
-        { email, password },
-        config
-      );
+      await axios.post(
+  `${process.env.REACT_APP_BACKEND_URL}/api/user/login`,
+  { email, password },
+  config
+);
+
       // console.log(JSON.stringify(data));
       toast({
         title: "Login Successful",
