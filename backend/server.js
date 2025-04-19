@@ -14,17 +14,12 @@ connectDB();
 const app = express();
 app.use(express.json());
 const cors = require("cors");
-const allowedOrigins = [
-  "https://chat-box-5hb4.vercel.app",
-  "https://chat-box-five-jet.vercel.app"
-];
-
+const FRONTEND_URL = process.env.FRONTEND_URL;
 app.use(cors({
-  origin: allowedOrigins,
+  origin: [FRONTEND_URL],
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"]
 }));
-app.options('*', cors());
 
 
 app.use("/api/user", userRoutes);
@@ -51,7 +46,8 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-box-five-jet.vercel.app",
+    origin: [FRONTEND_URL],
+    credentials: true
   },
 });
 io.on("connection", (socket) => {
