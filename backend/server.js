@@ -15,11 +15,16 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 const FRONTEND_URL = process.env.FRONTEND_URL;
-app.use(cors({
-  origin: [FRONTEND_URL],
+const corsOptions = {
+  origin: FRONTEND_URL,
   credentials: true,
-  methods: ["GET","POST","PUT","DELETE","OPTIONS"]
-}));
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+};
+
+app.use(cors(corsOptions));
+
+// explicitly handle preflight requests
+app.options("*", cors(corsOptions));
 
 
 app.use("/api/user", userRoutes);
